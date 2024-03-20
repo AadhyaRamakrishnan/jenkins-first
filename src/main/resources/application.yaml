@@ -1,0 +1,24 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: Jenkins-Working
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hplus
+    username: root
+    password: pass@word1
+    platform: mysql
+    initialization-mode: always
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5
+  jpa:
+    hibernate:
+      ddl-auto: true
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MYSQL8Dialect
+      generate-ddl: true
+      show-sql: true
