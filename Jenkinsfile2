@@ -1,6 +1,6 @@
 node {
      stage("Clone the project") {
-      git branch: 'master', url: 'https://github.com/AadhyaRamakrishnan/jenkins-first.git'
+      git branch: 'main', url: 'https://github.com/AadhyaRamakrishnan/jenkins-first.git'
      }
 
      stage("Compilation") {
