@@ -1,0 +1,38 @@
+pipeline {
+      agent any
+      stages {
+
+      stage("Source") {
+        agent any
+        steps {
+           git branch: 'main', url: 'https://github.com/AadhyaRamakrishnan/jenkins-first.git'
+           }
+           }
+
+             stage ("Build") {
+               agent any
+               steps {
+                   sh 'mvn clean package'
+                   }
+                 }
+
+                  stage("SonarQube Analysis") {
+                    agent any
+                    steps {
+                      sh 'mvn clean verify sonar:sonar -Dsonar.login='admin' -Dsonar.password='admin@123'
+
+                      }
+                    }
+
+                    stage ('Approve Deployment') {
+                       agent any
+                       input {
+                         message "Do you want to proceed for Deployment?"
+                         }
+
+                       steps {
+                         // Add deploy steps and alerts below
+                          sh 'echo "Deploying into Server"'
+                         }
+                       }
+
